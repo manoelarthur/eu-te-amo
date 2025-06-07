@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nosso Amor</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #ff9aa2, #ffb6b9);
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      transform: rotate(45deg);
+      animation: float 10s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .photo {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 15px;
+      border: 4px solid #fff;
+      box-shadow: 0 0 15px rgba(255,255,255,0.6);
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 28px;
+    }
+
+    #timer {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    .message {
+      font-size: 16px;
+      margin-top: 20px;
+      padding: 0 15px;
+      min-height: 80px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #fff;
+      color: #ff5e78;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #ffe3e6;
+    }
+
+    audio {
+      margin-top: 25px;
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    /* Slideshow */
+    .slideshow-container {
+      max-width: 320px;
+      position: relative;
+      margin: 20px auto;
+    }
+
+    .album-foto {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.4);
+      border: 3px solid white;
+    }
+
+    .slide {
+      display: none;
+      animation: fade 1s;
+    }
+
+    @keyframes fade {
+      from {opacity: 0.4}
+      to {opacity: 1}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background" id="background"></div>
+
+  <div class="container">
+    <!-- FOTO PRINCIPAL -->
+    <img src="sua-foto.jpg" alt="Nós dois" class="photo">
+
+    <!-- SLIDESHOW DE FOTOS -->
+    <div class="slideshow-container">
+      <div class="slide fade">
+        <img src="fotos/foto1.jpg" class="album-foto" alt="Foto 1">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto2.jpg" class="album-foto" alt="Foto 2">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto3.jpg" class="album-foto" alt="Foto 3">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto4.jpg" class="album-foto" alt="Foto 4">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto5.jpg" class="album-foto" alt="Foto 5">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto6.jpg" class="album-foto" alt="Foto 6">
+      </div>
+      <div class="slide fade">
+      <img src="fotos/foto7.jpg" class="album-foto" alt="Foto 7">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto8.jpg" class="album-foto" alt="Foto 8">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto9.jpg" class="album-foto" alt="Foto 9">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto10.jpg" class="album-foto" alt="Foto 10">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto11.jpg" class="album-foto" alt="Foto 11">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto12.jpg" class="album-foto" alt="Foto 12">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto13.jpg" class="album-foto" alt="Foto 13">
+      </div>
+      <div class="slide fade">
+      <img src="fotos/foto14.jpg" class="album-foto" alt="Foto 14">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto15.jpg" class="album-foto" alt="Foto 15">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto16.jpg" class="album-foto" alt="Foto 16">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto17.jpg" class="album-foto" alt="Foto 17">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto18.jpg" class="album-foto" alt="Foto 18">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto19.jpg" class="album-foto" alt="Foto 19">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto20.jpg" class="album-foto" alt="Foto 20">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto21.jpg" class="album-foto" alt="Foto 21">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto22.jpg" class="album-foto" alt="Foto 22">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto23.jpg" class="album-foto" alt="Foto 23">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto24.jpg" class="album-foto" alt="Foto 124">
+      </div>
+      <div class="slide fade">
+      <img src="fotos/foto25.jpg" class="album-foto" alt="Foto 25">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto26.jpg" class="album-foto" alt="Foto 26">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto27.jpg" class="album-foto" alt="Foto 27">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto28.jpg" class="album-foto" alt="Foto 28">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto29.jpg" class="album-foto" alt="Foto 29">
+      </div>
+      <div class="slide fade">
+        <img src="fotos/foto30.jpg" class="album-foto" alt="Foto 30">
+      </div>
+    </div>
+
+    <h1>Nosso Amor ❤️</h1>
+
+    <div id="timer"></div>
+
+    <div class="message" id="loveMessage">
+      Clique no botão abaixo para receber uma mensagem fofa 🥰
+    </div>
+
+    <button onclick="showRandomMessage()">Me diz algo fofo 💕</button>
+
+    <audio autoplay loop controls>
+      <source src="musica/Filipe Ret - Só Pra Você Lembrar (Ao Vivo).mp3" type="audio/mpeg">
+      Seu navegador não suporta áudio.
+    </audio>
+  </div>
+
+  <script>
+  // Contador desde 11/08/2024
+  const startDate = new Date("2024-08-11T00:00:00");
+  function updateTimer() {
+    const now = new Date();
+    const diff = now - startDate;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+    document.getElementById("timer").innerText =
+      `Estamos juntos há ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos.`;
+  }
+  setInterval(updateTimer, 1000);
+  updateTimer();
+
+  // Fundo animado
+  const bg = document.getElementById('background');
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = `${Math.random() * 100}vw`;
+    heart.style.animationDuration = `${5 + Math.random() * 5}s`;
+    bg.appendChild(heart);
+    setTimeout(() => bg.removeChild(heart), 10000);
+  }
+  setInterval(createHeart, 300);
+
+  // Mensagens fofas
+  const messages = [
+    "Você é a melhor parte dos meus dias. 💖",
+    "Se eu pudesse te dar uma coisa na vida, te daria a capacidade de se ver pelos meus olhos — só assim entenderia o quanto é especial. ✨",
+    "Meu lugar favorito no mundo inteiro é ao seu lado. 🌍❤️",
+    "Te amo de um jeito que nem o tempo consegue explicar. ⏳💕",
+    "Você é o motivo de tantos sorrisos meus. 😍",
+    "Nada no mundo me acalma mais do que ouvir sua voz. 🎶",
+    "Nosso amor é a minha certeza mais bonita. 💫",
+    "Se amar você fosse um crime, eu aceitaria a prisão perpétua. 🚔❤️",
+    "Contigo, até os dias comuns viram lembranças inesquecíveis. ☀️📸",
+    "Se você soubesse o quanto penso em você, me chamaria de pensamento. 💭❤️"
+  ];
+  function showRandomMessage() {
+    const message = messages[Math.floor(Math.random() * messages.length)];
+    document.getElementById("loveMessage").innerText = message;
+  }
+
+  // Embaralhar slides
+  function shuffleSlides() {
+    const container = document.querySelector(".slideshow-container");
+    const slides = Array.from(container.children);
+
+    for (let i = slides.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [slides[i], slides[j]] = [slides[j], slides[i]];
+    }
+
+    // Aplica nova ordem
+    slides.forEach(slide => container.appendChild(slide));
+  }
+
+  // Slideshow automático
+  let slideIndex = 0;
+  function showSlides() {
+    const slides = document.getElementsByClassName("slide");
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1 }
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 3000);
+  }
+
+  shuffleSlides();  // <--- embaralha antes de começar
+  showSlides();
+</script>
+
+
+</body>
+</html>
