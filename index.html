@@ -209,8 +209,6 @@
       <div class="slide">
         <img class="album-foto" src="fotos/foto15.jpg" alt="Foto 15">
       </div>
-</div>
-
     </div>
 
     <h1>Nosso Amor ❤️</h1>
@@ -240,7 +238,7 @@
     const minutes = Math.floor((diff / (1000 * 60)) % 60);
     const seconds = Math.floor((diff / 1000) % 60);
     document.getElementById("timer").innerText =
-      Estamos juntos há ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos.;
+      `Estamos juntos há ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos.`;
   }
   setInterval(updateTimer, 1000);
   updateTimer();
@@ -250,8 +248,8 @@
   function createHeart() {
     const heart = document.createElement('div');
     heart.className = 'heart';
-    heart.style.left = ${Math.random() * 100}vw;
-    heart.style.animationDuration = ${5 + Math.random() * 5}s;
+    heart.style.left = `${Math.random() * 100}vw`;
+    heart.style.animationDuration = `${5 + Math.random() * 5}s`;
     bg.appendChild(heart);
     setTimeout(() => bg.removeChild(heart), 10000);
   }
