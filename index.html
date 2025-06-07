@@ -133,21 +133,22 @@
       margin: 20px auto;
     }
 
-    .album-foto {
-      width: 100%;
-      height: auto;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(255,255,255,0.4);
-      border: 3px solid white;
-      transition: opacity 0.5s ease-in-out; /* Suaviza transição */
-    }
+  .album-foto {
+    background-color: #ffb6b9; /* mesmo tom do fundo */
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.4);
+    border: 3px solid white;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .slide img.loaded {
+    opacity: 1;
+  }
 
-    .slide {
-      display: none;
-      animation: fade 1s;
-      background-color: #ffb6b9; /* evita fundo branco */
-      border-radius: 15px;
-    }
 
     @keyframes fade {
       from {opacity: 0.4}
@@ -304,11 +305,30 @@
     for (let i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
     }
+  
     slideIndex++;
     if (slideIndex > slides.length) { slideIndex = 1 }
-    slides[slideIndex - 1].style.display = "block";
-    setTimeout(showSlides, 3000);
+  
+    const currentSlide = slides[slideIndex - 1];
+    const img = currentSlide.querySelector('img');
+  
+    // Reset opacity
+    img.classList.remove('loaded');
+  
+    // Aguarda a imagem carregar antes de mostrar o slide
+    if (!img.complete) {
+      img.onload = () => {
+        img.classList.add('loaded');
+        currentSlide.style.display = "block";
+      };
+    } else {
+      img.classList.add('loaded');
+      currentSlide.style.display = "block";
   }
+
+  setTimeout(showSlides, 3000);
+}
+
 
   // Inicia tudo
   preloadImages();
