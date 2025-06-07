@@ -299,35 +299,54 @@
   }
 
   // Slideshow automático
-  let slideIndex = 0;
-  function showSlides() {
-    const slides = document.getElementsByClassName("slide");
-    for (let i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+  let slideIndex = -1;
+  let slides = Array.from(document.getElementsByClassName("slide"));
+  let previousIndex = -1;
+  
+  function shuffleSlides() {
+    for (let i = slides.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [slides[i], slides[j]] = [slides[j], slides[i]];
     }
+    const container = document.querySelector(".slideshow-container");
+    slides.forEach(slide => container.appendChild(slide));
+  }
   
-    slideIndex++;
-    if (slideIndex > slides.length) { slideIndex = 1 }
+  function showSlides() {
+    if (slides.length === 0) return;
   
-    const currentSlide = slides[slideIndex - 1];
-    const img = currentSlide.querySelector('img');
+    // Oculta todas as imagens
+    slides.forEach(slide => {
+      slide.style.display = "none";
+      const img = slide.querySelector("img");
+      img.classList.remove("loaded");
+    });
   
-    // Reset opacity
-    img.classList.remove('loaded');
+    // Escolhe um índice diferente do anterior
+    do {
+      slideIndex = (slideIndex + 1) % slides.length;
+    } while (slideIndex === previousIndex && slides.length > 1);
   
-    // Aguarda a imagem carregar antes de mostrar o slide
+    previousIndex = slideIndex;
+  
+    const currentSlide = slides[slideIndex];
+    const img = currentSlide.querySelector("img");
+  
     if (!img.complete) {
       img.onload = () => {
-        img.classList.add('loaded');
+        img.classList.add("loaded");
         currentSlide.style.display = "block";
       };
     } else {
-      img.classList.add('loaded');
+      img.classList.add("loaded");
       currentSlide.style.display = "block";
+    }
+  
+    setTimeout(showSlides, 3000);
   }
-
-  setTimeout(showSlides, 3000);
-}
+  
+  shuffleSlides();
+  showSlides();
 
 
   // Inicia tudo
